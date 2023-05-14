@@ -1,0 +1,42 @@
+.holder{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+
+}
+.content{
+    width: 60%;
+    position: relative;
+}
+.header{
+    width: 100%;
+}
+
+.title{
+    font-size: .7rem;
+}
+
+.collapse-text{
+    width: 70%;
+    overflow: hidden;
+    text-overflow:ellipsis;
+}
+
+#collapse-form{
+    position: absolute;
+    top: -100rem;
+    transition: .5s ease-in-out;
+    width: 100%;
+    padding: 4% 2%;
+}
+#collapse-form.active{
+    top: -4rem;
+}
+
+
+@media (max-width: 970px){
+    .content{
+        width: 100%;
+    }
+}
