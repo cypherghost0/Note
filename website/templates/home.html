@@ -1,0 +1,73 @@
+{% extends "base.html" %} 
+{% block title %}Home{% endblock %} 
+{% block content %}
+<script>
+  function toggleCollapse(){
+    document.getElementById("collapse-form").classList.toggle("active");
+  }
+</script>
+<div class="holder">
+  <div class="content">
+    <div class="header">
+        <div class="addBtn d-flex justify-content-end">
+          <button class="btn btn-primary" onclick="toggleCollapse()">
+            <i class="fa fa-plus"></i> &nbsp;
+            Add Record
+          </button>
+        </div>
+    </div>
+    {% for note in user.notes %}
+    <div class="tab-content">
+      <div class="title">{{ note.title }}</div>
+      <div class="p-3 g-col-6 bg-dark-subtle my-2 rounded d-flex align-items-center justify-content-between">
+        <span class="collapse-text text-nowrap">
+          {{ note.data }}
+        </span>
+        <div class="d-flex gap-2">
+          <a href="/delete/{{ note.id }}">
+            <button class="btn btn-light text-danger text-nowrap" onClick="deleteNote({{ note.id }})">
+              <i class="fa fa-minus"></i> &nbsp;
+              Delete Record
+            </button>
+          </a>
+          <a href="/Detail/{{ note.id }}">
+            <button class="btn btn-light text-nowrap">
+              View more
+            </button>
+          </a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    
+    <div class="bg-secondary-subtle shadow rounded" id="collapse-form">
+      <h4>Add Record</h4>
+      <form method="post" enctype="multipart/form-data">
+        <input type="text" name="title">
+        <input type="file" name="file" required>
+        <textarea name="note" id="note" class="form-control"></textarea>
+        <br />
+        <div align="center">
+          <button type="submit" class="btn btn-primary">Add Note</button>
+          <div class="btn btn-primary" onclick="toggleCollapse()">Cancel</div>
+        </div>
+      </form>
+    </div>
+
+    <!-- <h1 align="center">Notes</h1>
+    <ul class="list-group list-group-flush" id="notes">
+      {% for note in user.notes %}
+      <li class="list-group-item">
+        {{ note.data }}
+        <button type="button" class="close" onClick="deleteNote({{ note.id }})">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </li>
+      {% endfor %}
+    </ul>
+
+    {% endblock %} -->
+
+
+  </div>
+</div>

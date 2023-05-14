@@ -1,0 +1,18 @@
+{% extends "base.html" %} 
+{% block title %}Detail{% endblock %} 
+{% block content %}
+<div class="holder">
+  <div class="content">
+    <div class="tab-content">
+      <div class="title">{{ note.title }}</div>
+      <div class="p-3 g-col-6 bg-dark-subtle my-2 rounded d-flex">
+        <span class="collapse-text text-nowrap">
+          {{ note.data }}
+        </span>
+        <iframe src="/static/media/{{note.video}}" frameborder="0"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
